@@ -27,7 +27,8 @@ echo "Permissions:"
 ls -FAlh $XAUTH
 echo ""
 echo "Running docker..."
-docker run -d\
+docker run -it\
+    --rm\
     --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
@@ -35,17 +36,7 @@ docker run -d\
     --volume="$XAUTH:$XAUTH" \
     --net=host \
     --privileged \
-    --name=ros-noetic-rviz \
-    -t osrf/ros:noetic-desktop \
+    --name=ros-humble-rviz \
+    -t osrf/ros:humble-desktop \
     bash
-
 echo "Done."
-
-
-# inside the container:
-# apt-get update
-# source /opt/ros/noetic/setup.bash 
-# rviz
-# To get into a docker container:
-# docker exec -it <container_name> /bash
-
