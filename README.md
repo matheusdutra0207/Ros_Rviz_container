@@ -4,7 +4,7 @@
 ```
 xhost + local:docker
 export DISPLAY=:1
-docker exec -it <container_name> /bash
+sudo docker exec -it <container_name> bash
 ```
 
 #### Inside the container:
